@@ -1,35 +1,32 @@
 // @ts-check
-// `@type` JSDoc annotations allow editor autocompletion and type checking
-// (when paired with `@ts-check`).
-// There are various equivalent ways to declare your Docusaurus config.
-// See: https://docusaurus.io/docs/api/docusaurus-config
+// Note: type annotations allow type checking and IDEs autocompletion
 
-import { themes as prismThemes } from 'prism-react-renderer';
-
-// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
+const lightCodeTheme = require('prism-react-renderer').themes.github;
+const darkCodeTheme = require('prism-react-renderer').themes.dracula;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Crypto Price Tracker Documentation',
-  tagline: 'Documentation for the Crypto Price Tracker application',
+  title: 'Crypto Price Tracker',
+  tagline: 'Real-time cryptocurrency price tracking made simple',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://enriqueAi.github.io',
+  url: 'https://enriqueai.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
+  // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/crypto-price-tracker/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'enriqueAi', // Your GitHub username
-  projectName: 'crypto-price-tracker', // Your repo name
+  organizationName: 'enriqueai', // Usually your GitHub org/user name.
+  projectName: 'crypto-price-tracker', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
+  // Even if you don't use internalization, you can use this field to set useful
+  // metadata like html lang. For example, if your site is Chinese, you may want
+  // to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -41,14 +38,21 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: './sidebars.js',
-          // Update edit URL to your repository
+          sidebarPath: require.resolve('./sidebars.js'),
+          // Please change this to your repo.
+          // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/enriqueAi/crypto-price-tracker/tree/main/docs/',
+            'https://github.com/enriqueai/crypto-price-tracker/tree/main/docs/',
         },
-        blog: false, // Disable blog feature since we're not using it
+        blog: {
+          showReadingTime: true,
+          // Please change this to your repo.
+          // Remove this to remove the "edit this page" links.
+          editUrl:
+            'https://github.com/enriqueai/crypto-price-tracker/tree/main/docs/',
+        },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: require.resolve('./src/css/custom.css'),
         },
       }),
     ],
@@ -73,7 +77,7 @@ const config = {
             label: 'Documentation',
           },
           {
-            href: 'https://github.com/enriqueAi/crypto-price-tracker',
+            href: 'https://github.com/enriqueai/crypto-price-tracker',
             label: 'GitHub',
             position: 'right',
           },
@@ -86,40 +90,28 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Getting Started',
+                label: 'Documentation',
                 to: '/docs/intro',
-              },
-              {
-                label: 'API Integration',
-                to: '/docs/api-integration',
-              },
-              {
-                label: 'Components',
-                to: '/docs/ui-components',
               },
             ],
           },
           {
-            title: 'Project',
+            title: 'Community',
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/enriqueAi/crypto-price-tracker',
-              },
-              {
-                label: 'Issues',
-                href: 'https://github.com/enriqueAi/crypto-price-tracker/issues',
+                href: 'https://github.com/enriqueai/crypto-price-tracker',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Crypto Price Tracker. Built by Henry Hennings.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Crypto Price Tracker. Built with Docusaurus.`,
       },
       prism: {
-        theme: prismThemes.github,
-        darkTheme: prismThemes.dracula,
+        theme: lightCodeTheme,
+        darkTheme: darkCodeTheme,
       },
     }),
 };
 
-export default config;
+module.exports = config;
